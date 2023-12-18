@@ -1,0 +1,125 @@
+.abs_cont {
+    position: absolute;
+    right: 0;
+    top: 20%;
+}
+
+.div_father {
+    display: flex;
+    flex-direction: column;
+}
+
+.img_fa {
+    width: 50px;
+    height: 50px;
+    color: #004492!important;
+    font-size: 30px;
+    border: 2px solid #004492;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.div_fa {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+.text_fa {
+    display: flex;
+    background-color: #004492;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 45px;
+}
+
+.cultura_img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.text_fa p{
+    color: white;
+    margin-bottom: 0px;
+    padding: 10px;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+}
+
+.div_select select {
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+}
+
+.text_link a {
+    color: #004492;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+}
+
+.text_link {
+    text-align: center;
+}
+
+.h1_cus {
+    color: #004492!important;
+    font-family: 'Franklin Gothic Medium', arial;
+    font-size: 55px;
+
+}
+.p_cus {
+    color: #004492!important;
+    font-size: 25px;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+}
+
+.col_cus_x {
+    width: 100%;
+    height: 236px!important;
+}
+
+.col_cus_z {
+    width: 100%;
+    height: 235px!important;
+}
+
+.div_cnn {
+    background-color: #004492;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_cnn a {
+    color: white;
+    font-size: 3.5rem;
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.div_cnn_x {
+    background-color: #00A6E5;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_cnn_x a {
+    color: white;
+    font-size: 3.5rem;
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.under_s {
+    color: #00A6E5!important;
+    background-color: #00A6E5!important;
+}
+
+.reg_a {
+    color: #00A6E5!important;
+}
