@@ -50,35 +50,95 @@
             </div>
         <div class="card col-sm-12">
             <div class="card-body">
-                <form>
-                    <h2 class="text-center h1_cus">9. DATOS DE CONTACTOS *</h2>
-                    <p class="label-cus">De acuerdo a la Ley Estatutaria 1581 de 2012 reglamentada por el Decreto No.1377 de 2013 y obrando a nombre propio y como Representante Legal de la razón social que represento autorizo de manera previa, informada, voluntaria y expresa a Lemco S.A.S., Challenger S.A.S, Operadora Habitel S.A.S, Habitel S.A.S, Fundación Challenger, Sky Forwarder S.A.S, Sky Industrial S.A.S, Sky Logística Integral S.A.S y Sky Electronics Zona Franca S.A.S para la recolección, tratamiento, almacenamiento, conservación, uso, circulación, supresión, transmisión y transferencia de datos personales suministrados en el presente formulario así como los recolectados de manera biométrica, por medios electrónicos o cualquier otro medio, cuyas finalidades, derechos de los titulares y  procedimiento para  presentación de reclamos pueden ser consultadas en la Política de Tratamiento de Datos Personales que se encuentra publicada en la páginas www.lemco.co.</p>
+            <form action="{{ route('contacto.store2',$id) }}" method="post">
+                @csrf
+                    <h2 class="text-center h1_cus mt-4 mb-4">9. DATOS DE CONTACTOS </h2>
 
-                       
+
+
                     <!-- Tercera sección (campos adicionales para la Identificación del Cliente) -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-cus" for="razonSocial">Contacto Comercial </label>
-                                <input type="text" class="form-control" id="razonSocial" name="razonSocial" >
+                                <label class="label-cus" for="ContactoCo">Contacto Comercial*</label>
+                                <input type="text" class="form-control" id="ContactoCo" name="ContactoCo" >
+                                @if ($errors->has('ContactoCo'))
+                                <p class="text-danger">{{ $errors->first('ContactoCo') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="numeroIdentificacion">Cargo </label>
-                                <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" >
+                                <label class="label-cus" for="CargoCo">Cargo *</label>
+                                <input type="text" class="form-control" id="CargoCo" name="CargoCo" >
+                                @if ($errors->has('CargoCo'))
+                                <p class="text-danger">{{ $errors->first('CargoCo') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="correoElectronico">Correo electrónico</label>
-                                <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" >
+                                <label class="label-cus" for="CorreoCo">Correo electrónico*</label>
+                                <input type="email" class="form-control" id="CorreoCo" name="CorreoCo" >
+                                @if ($errors->has('CorreoCo'))
+                                <p class="text-danger">{{ $errors->first('CorreoCo') }}</p>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-cus" for="tipoIdentificacion">Teléfono(s) y extensión</label>
-                                <input type="text" class="form-control" id="tipoIdentificacion" name="tipoIdentificacion" >
+                                <label class="label-cus" for="TelefonoCo">Teléfono(s) y extensión*</label>
+                                <input type="text" class="form-control" id="TelefonoCo" name="TelefonoCo" >
+                                @if ($errors->has('TelefonoCo'))
+                                <p class="text-danger">{{ $errors->first('TelefonoCo') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="paginaWeb">Celular</label>
-                                <input type="url" class="form-control" id="paginaWeb" name="paginaWeb" >
+                                <label class="label-cus" for="CelularCo">Celular*</label>
+                                <input type="text" class="form-control" id="CelularCo" name="CelularCo" >
+                                @if ($errors->has('CelularCo'))
+                                <p class="text-danger">{{ $errors->first('CelularCo') }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="underline under_s">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-cus" for="ContactoCa">Contacto Calidad / Logístico *</label>
+                                <input type="text" class="form-control" id="ContactoCa" name="ContactoCa" >
+                                @if ($errors->has('ContactoCa'))
+                                 <p class="text-danger">{{ $errors->first('ContactoCa') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label class="label-cus" for="CargoCa">Cargo *</label>
+                                <input type="text" class="form-control" id="CargoCa" name="CargoCa" >
+                                @if ($errors->has('CargoCa'))
+                                <p class="text-danger">{{ $errors->first('CargoCa') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label class="label-cus" for="CorreoCa">Correo electrónico*</label>
+                                <input type="email" class="form-control" id="CorreoCa" name="CorreoCa" >
+                                @if ($errors->has('CorreoCa'))
+                                <p class="text-danger">{{ $errors->first('CorreoCa') }}</p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-cus" for="TelefonoCa">Teléfono(s) y extensión*</label>
+                                <input type="text" class="form-control" id="TelefonoCa" name="TelefonoCa" >
+                                @if ($errors->has('TelefonoCa'))
+                                <p class="text-danger">{{ $errors->first('TelefonoCa') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label class="label-cus" for="CelularCa">Celular*</label>
+                                <input type="text" class="form-control" id="CelularCa" name="CelularCa" >
+                                @if ($errors->has('CelularCa'))
+                                <p class="text-danger">{{ $errors->first('CelularCa') }}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -87,61 +147,48 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-cus" for="razonSocial">Contacto Financiero </label>
-                                <input type="text" class="form-control" id="razonSocial" name="razonSocial" >
+                                <label class="label-cus" for="ContactoF">Contacto Financiero* </label>
+                                <input type="text" class="form-control" id="ContactoF" name="ContactoF" >
+                                @if ($errors->has('ContactoF'))
+                                <p class="text-danger">{{ $errors->first('ContactoF') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="numeroIdentificacion">Cargo </label>
-                                <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" >
+                                <label class="label-cus" for="CargoF">Cargo* </label>
+                                <input type="text" class="form-control" id="CargoF" name="CargoF" >
+                                @if ($errors->has('CargoF'))
+                                <p class="text-danger">{{ $errors->first('CargoF') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="correoElectronico">Correo electrónico</label>
+                                <label class="label-cus" for="correoElectronico">Correo electrónico*</label>
                                 <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" >
+                                @if ($errors->has('correoElectronico'))
+                                <p class="text-danger">{{ $errors->first('correoElectronico') }}</p>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-cus" for="tipoIdentificacion">Teléfono(s) y extensión</label>
-                                <input type="text" class="form-control" id="tipoIdentificacion" name="tipoIdentificacion" >
+                                <label class="label-cus" for="CorreoF">Teléfono(s) y extensión*</label>
+                                <input type="text" class="form-control" id="CorreoF" name="CorreoF" >
+                                @if ($errors->has('CorreoF'))
+                                <p class="text-danger">{{ $errors->first('CorreoF') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="paginaWeb">Celular</label>
-                                <input type="url" class="form-control" id="paginaWeb" name="paginaWeb" >
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="underline under_s">
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="label-cus" for="razonSocial">Contacto Calidad / Logístico </label>
-                                <input type="text" class="form-control" id="razonSocial" name="razonSocial" >
-                            </div>
-                            <div class="form-group">
-                                <label class="label-cus" for="numeroIdentificacion">Cargo </label>
-                                <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" >
-                            </div>
-                            <div class="form-group">
-                                <label class="label-cus" for="correoElectronico">Correo electrónico</label>
-                                <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" >
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="label-cus" for="tipoIdentificacion">Teléfono(s) y extensión</label>
-                                <input type="text" class="form-control" id="tipoIdentificacion" name="tipoIdentificacion" >
-                            </div>
-                            <div class="form-group">
-                                <label class="label-cus" for="paginaWeb">Celular</label>
-                                <input type="url" class="form-control" id="paginaWeb" name="paginaWeb" >
+                                <label class="label-cus" for="CelularF">Celular*</label>
+                                <input type="text" class="form-control" id="CelularF" name="CelularF" >
+                                @if ($errors->has('CelularF'))
+                                <p class="text-danger">{{ $errors->first('CelularF') }}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
 
                     <div class="text-center mt-4">
-                    <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/proveedore/fondos">Guardar y Continuar
-                    </a></div> 
+                    <button class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/fondos">Guardar y Continuar
+                    </button></div> 
                 </form>
             </div>
         </div>

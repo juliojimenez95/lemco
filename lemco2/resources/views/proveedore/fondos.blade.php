@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Lemco</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
@@ -39,23 +39,23 @@
 </head>
 <body>
     <div class="container">
-        <div>
-            <a class="btn btn-success btn_cb_c" href="#"
+    <div>
+        <a class="btn btn-success btn_cb_c" href="#"
 
-                            style="margin-top: 25px;">
-                            <i class="fa-solid fa-arrow-left"></i>
-                            {{ __('Regresar') }}
-                            </a>
+                        style="margin-top: 25px;">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        {{ __('Regresar') }}
+                        </a>
         </div>
-    <div class="text-center">
-            <img src="https://formacion.lemco.co/pluginfile.php/1/theme_edly/main_logo/1694462261/logo%20lemco.png"   class=" my-4 img-fluid">
-            
-
-        </div>
+        <div class="text-center">
+                <img src="https://formacion.lemco.co/pluginfile.php/1/theme_edly/main_logo/1694462261/logo%20lemco.png"   class=" my-4 img-fluid">
+                
+          </div>
         
         <div class="card col-sm-12">
             <div class="card-body">
-                <form>
+            <form action="{{ route('fondos.store',$id) }}" method="post">
+                @csrf
                     <h2 class="text-center h1_cus">10. DECLARACIÓN DE ORIGEN DE FONDOS *</h2> <br>
                     <p class="p_cus">Con la firma del presente formulario y con el fin de establecer relaciones comerciales con una o varias Empresas del Grupo Lemco de manera voluntaria y libre, declaro expresamente que:
                             <br><br>
@@ -73,15 +73,18 @@
               
                              <center>
                             <strong class="text-primary justify-content-center">
-                            <label class="op_cus">Si <input type="radio" name="grupo5" value="1"></label>
-                            <label class="op_cus">No <input type="radio" name="grupo5" value="0"></label>
+                            <label class="op_cus">Si <input type="radio" name="Respuesta" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="Respuesta" value="0"></label>
                             </strong>
+                            @if ($errors->has('Respuesta'))
+                                <p class="text-danger">{{ $errors->first('Respuesta') }}</p>
+                            @endif
                             </center>
 
               <div class="row justify-content-center " style="margin-top: 47px;">
                 <div class="col-md-6 text-center">
-                <a class="text-center btn " style="background-color: #193b64; color: #93c353;"  href="/proveedore/autorizacion">Guardar y Continuar
-                    </a>
+                <button class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/autorizacion">Guardar y Continuar
+                    </button>
                 </div>
             </div>
               

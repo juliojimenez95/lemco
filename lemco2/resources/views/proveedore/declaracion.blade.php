@@ -56,7 +56,9 @@
         <div class="card col-sm-12">
             <div class="card-body">
                 <form>
-                    <h2 class="text-center h1_cus">5. DECLARACIÓN PARA EL CONOCIMIENTO DE PERSONA EXPUESTA O RECONOCIDA POLÍTICAMENTE “PEP”</h2>
+                    <h2 class="text-center h1_cus">5. DECLARACIÓN PARA EL CONOCIMIENTO DE PERSONA EXPUESTA O RECONOCIDA POLÍTICAMENTE “PEP”*</h2>
+                    <div class="col-sm-12 text-center">
+                    <p class="p_cus">Marque con un "Si" si algún Representante Legal, Socio o Accionista de la Empresa cuenta con algunas de las siguientes cualidades:*</div>
                     <div class="row">
                     <div class="col-md-12 mb-4">
                 <div class="form-group">
@@ -67,7 +69,6 @@
                         <div class="">
                           <label class="mr-2 label-cus" >Si <input type="radio" name="grupo1" value="Si"></label>
                           <label class="mr-2 label-cus" >No <input type="radio" name="grupo1" value="No"></label>
-                          <label class="mr-2 label-cus" >N/A <input type="radio" name="grupo1" value="N/A"></label>
                           <span class="mr_5 label-cus">¿Quién?</span>
                           <input type="text" class="input_col" name="Observacion" id="Observacion">
                         </div>
@@ -86,7 +87,6 @@
                         <div class="">
                           <label class="label-cus" >Si <input type="radio" name="grupo2" value="Si"></label>
                           <label class="label-cus" >No <input type="radio" name="grupo2" value="No"></label>
-                          <label class="label-cus" >N/A <input type="radio" name="grupo2" value="N/A"></label>
                           <span class="label-cus mr_5">¿Quién?</span>
                           <input type="text" name="Observacion2" id="Observacion2" class="input_col">
                         </div>
@@ -102,7 +102,6 @@
                         <div class="">
                           <label class="label-cus" >Si <input type="radio" name="grupo2" value="Si"></label>
                           <label class="label-cus" >No <input type="radio" name="grupo2" value="No"></label>
-                          <label class="label-cus" >N/A <input type="radio" name="grupo2" value="N/A"></label>
                           <span class="label-cus mr_5">¿Quién?</span>
                           <input type="text" name="Observacion2" id="Observacion2" class="input_col">
                         </div>
@@ -118,7 +117,6 @@
                         <div class="">
                           <label class="label-cus" >Si <input type="radio" name="grupo2" value="Si"></label>
                           <label class="label-cus" >No <input type="radio" name="grupo2" value="No"></label>
-                          <label class="label-cus" >N/A <input type="radio" name="grupo2" value="N/A"></label>
                           <span class="label-cus mr_5">¿Quién?</span>
                           <input type="text" name="Observacion2" id="Observacion2" class="input_col">
                         </div>
@@ -134,7 +132,6 @@
                         <div class="">
                           <label class="label-cus" >Si <input type="radio" name="grupo2" value="Si"></label>
                           <label class="label-cus" >No <input type="radio" name="grupo2" value="No"></label>
-                          <label class="label-cus" >N/A <input type="radio" name="grupo2" value="N/A"></label>
                           <span class="label-cus mr_5">¿Quién?</span>
                           <input type="text" name="Observacion2" id="Observacion2" class="input_col">
                         </div>

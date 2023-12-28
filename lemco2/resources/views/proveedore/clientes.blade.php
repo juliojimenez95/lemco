@@ -55,22 +55,23 @@
         
         <div class="card col-sm-12">
             <div class="card-body">
-                <form>
+            <form action="{{ route('clientesp.store',$id) }}" method="post">
+                @csrf
                     <h2 class="text-center h1_cus">8. PRINCIPALES CLIENTES</h2>
                     <div class="row">
                     <div class="col-md-6">
                  <div class="form-group">
-                <label for="flazonSocial" class="label-cus">Empresa</label>
-                <input type="text" class="form-control" id="RazonSocial" name="RazonSocial" >
+                <label for="Empresa" class="label-cus">Empresa</label>
+                <input type="text" class="form-control" id="Empresa" name="Empresa" >
               </div>
 
               <div class="form-group">
-                <label for="participacion" class="label-cus">Contacto (nombres y apellidos)</label>
-                <input type="text" class="form-control" id="participacion" name="participacion" >
+                <label for="Contacto" class="label-cus">Contacto (nombres y apellidos)</label>
+                <input type="text" class="form-control" id="Contacto" name="Contacto" >
             </div>
               <div class="form-group">
-                <label for="nacionalidad" class="label-cus">Correo Electrónico</label>
-                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" >
+                <label for="Correo" class="label-cus">Correo Electrónico</label>
+                <input type="text" class="form-control" id="Correo" name="Correo" >
               </div>
 
               
@@ -78,19 +79,19 @@
             <div class="col-md-6">
               
             <div class="form-group">
-                <label for="participacion" class="label-cus">Cargo</label>
-                <input type="text" class="form-control" id="participacion" name="participacion" >
+                <label for="Cargo" class="label-cus">Cargo</label>
+                <input type="text" class="form-control" id="Cargo" name="Cargo" >
             </div>
             
             <div class="form-group">
-                <label for="participacion" class="label-cus">Teléfono / Celular</label>
-                <input type="text" class="form-control" id="participacion" name="participacion" >
+                <label for="Telefono" class="label-cus">Teléfono / Celular</label>
+                <input type="text" class="form-control" id="Telefono" name="Telefono" >
             </div>
 
               <div class="row justify-content-center " style="margin-top: 47px;">
                 <div class="col-md-6 text-center">
-                <a class="text-center btn " style="background-color: #193b64; color: #93c353;"  href="/proveedore/contactos">Agregar
-                    </a>
+                <button class="text-center btn " style="background-color: #193b64; color: #93c353;"  href="/proveedore/contactos">Agregar
+                    </button>
                 </div>
             </div>
               
@@ -115,16 +116,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($clientes as $cliente)
                                     <tr>
-                                        
+                                        <td>{{ $cliente->Empresa }}</td>
+                                        <td>{{ $cliente->Cargo }}</td>
+                                        <td>{{ $cliente->Contacto }}</td>
+                                        <td>{{ $cliente->Telefono }}</td>
+                                        <td>{{ $cliente->Correo }}</td>
+                                        <td>
+                                            <form action="#" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
-                                    <!-- Agrega más filas según sea necesario -->
+                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <center>
                         <div class="col-md-12 d-flex ">
-                        <a class="text-center btn " style="background-color: #193b64; color: #93c353;"  href="/declaracion">Continuar
+                        <a class="text-center btn " style="background-color: #193b64; color: #93c353;"  href="/proveedore/contactos/{{$id}}">Continuar
                             </a>
                         </div>
                     </div>

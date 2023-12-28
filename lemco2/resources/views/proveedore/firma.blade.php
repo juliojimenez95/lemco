@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Lemco</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         body {
             background-color: #f8f9fa; /* Cambia el color de fondo según tu preferencia */
@@ -39,13 +39,13 @@
 </head>
 <body>
     <div class="container">
-        <div>
-            <a class="btn btn-success btn_cb_c" href="#"
+     <div>
+        <a class="btn btn-success btn_cb_c" href="#"
 
-                            style="margin-top: 25px;">
-                            <i class="fa-solid fa-arrow-left"></i>
-                            {{ __('Regresar') }}
-                            </a>
+                        style="margin-top: 25px;">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        {{ __('Regresar') }}
+                        </a>
         </div>
     <div class="text-center">
             <img src="https://formacion.lemco.co/pluginfile.php/1/theme_edly/main_logo/1694462261/logo%20lemco.png"   class=" my-4 img-fluid">
@@ -55,36 +55,48 @@
         
         <div class="card col-sm-12">
             <div class="card-body">
-                <form>
+            <form action="{{ route('firma.store',$id) }}" method="post">
+                @csrf
                     <h2 class="text-center h1_cus">13. FIRMA DEL REPRESENTANTE LEGAL Ó PERSONA NATURAL</h2>
                     <div class="row">
                     <div class="col-md-6">
                  <div class="form-group">
-                <label for="flazonSocial" class="label-cus">Nombre completo:</label>
-                <input type="text" class="form-control" id="RazonSocial" name="RazonSocial" placeholder="Ingrese su Razón Social o nombre completo">
+                <label for="Nombre" class="label-cus">Nombre completo*</label>
+                <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre completo">
+                @if ($errors->has('Nombre'))
+                    <p class="text-danger">{{ $errors->first('Nombre') }}</p>
+                @endif
               </div>
               
               <div class="form-group">
-                <label for="nacionalidad" class="label-cus">No. de identificación:</label>
-                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" placeholder="Ingrese su nacionalidad">
+                <label for="Identificacion" class="label-cus">No. de identificación*</label>
+                <input type="text" class="form-control" id="Identificacion" name="Identificacion" placeholder="Ingrese su nacionalidad">
+                @if ($errors->has('Identificacion'))
+                    <p class="text-danger">{{ $errors->first('Identificacion') }}</p>
+                @endif
               </div>
               
             </div>
             <div class="col-md-6">
               
             <div class="form-group">
-                <label for="tipoIdentificacion" class="label-cus">Tipo de identificación:</label>
-                <select class="form-control" id="tipoIdentificacion" name="tipoIdentificacion">
+                <label for="Tidentificacion" class="label-cus">Tipo de identificación*</label>
+                <select class="form-control" id="Tidentificacion" name="Tidentificacion">
                     <option value="c.c">C.C. (Cédula de Ciudadanía)</option>
                     <option value="c.e">C.E. (Cédula de Extranjería)</option>
                     <option value="p.p">P.P. (Pasaporte)</option>
                 </select>
+                @if ($errors->has('Tidentificacion'))
+                    <p class="text-danger">{{ $errors->first('Tidentificacion') }}</p>
+                @endif
             </div>
               <div class="form-group">
-                <canvas id="firma" width="200" height="50"></canvas>
-                <hr class=" ">
-                <label for="tipoIdentificacion" class="label-cus">Firma</label>
-
+                <canvas id="canvas" name="firma" width="500" height="50"></canvas>
+                <hr class=" under_s">
+                <p for="Firma" class="label-cus">Firma*</label>
+                @if ($errors->has('Firma'))
+                    <p class="text-danger">{{ $errors->first('Firma') }}</p>
+                @endif
               </div>
 
             </div>
@@ -94,13 +106,13 @@
           </div>
 
         <center>
-          <div class="col-sm-12">
+          
           <strong><p class="p_cus">Declaro que la información que he suministrado en este formulario, asi como la documentación aportada es verídica, correcta y completa y puede ser verificada en cualquier momento. Además, me comprometo a actualizarla de acuerdo a sus Politicas del Grupo Lemco</p></strong>
-          </div>
+
             <div class="row justify-content-center " style="margin-bottom: 40px;">
             <div class="col-md-6 text-center">
-            <a class="text-center btn "  style="background-color: #193b64; color: #93c353;" href="/anexo">Guardar y Continuar
-                </a>
+            <button class="text-center btn" style="background-color: #193b64; color: #93c353;"  >Guardar y Continuar
+                </button>
             </div>
             </center>
                 </form>
@@ -109,8 +121,68 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        
+        const $canvas = document.getElementById("canvas");
+        const contexto = $canvas.getContext("2d");
+        const COLOR_PINCEL = "#000000";
+        const GROSOR = 2; // Puedes ajustar el grosor del trazo según tus necesidades
+        let haComenzadoDibujo = false;
+        let xAnterior = 0;
+        let yAnterior = 0;
+        let xActual = 0;
+        let yActual = 0;
+
+        function obtenerXReal(clientX) {
+            const rect = $canvas.getBoundingClientRect();
+            return clientX - rect.left;
+        }
+
+        function obtenerYReal(clientY) {
+            const rect = $canvas.getBoundingClientRect();
+            return clientY - rect.top;
+        }
+
+        $canvas.addEventListener("mousedown", evento => {
+            xAnterior = xActual;
+            yAnterior = yActual;
+            xActual = obtenerXReal(evento.clientX);
+            yActual = obtenerYReal(evento.clientY);
+            contexto.beginPath();
+            contexto.fillStyle = COLOR_PINCEL;
+            contexto.fillRect(xActual, yActual, GROSOR, GROSOR);
+            contexto.closePath();
+            haComenzadoDibujo = true;
+        });
+
+        $canvas.addEventListener("mousemove", evento => {
+            if (!haComenzadoDibujo) {
+                return;
+            }
+
+            xAnterior = xActual;
+            yAnterior = yActual;
+            xActual = obtenerXReal(evento.clientX);
+            yActual = obtenerYReal(evento.clientY);
+            contexto.beginPath();
+            contexto.moveTo(xAnterior, yAnterior);
+            contexto.lineTo(xActual, yActual);
+            contexto.strokeStyle = COLOR_PINCEL;
+            contexto.lineWidth = GROSOR;
+            contexto.stroke();
+            contexto.closePath();
+        });
+
+        ["mouseup", "mouseout"].forEach(nombreDeEvento => {
+            $canvas.addEventListener(nombreDeEvento, () => {
+                haComenzadoDibujo = false;
+            });
+        });
+    });
+
+</script>
 </body>
 </html>

@@ -52,43 +52,65 @@
         
         <div class="card col-sm-12">
             <div class="card-body">
-                <form>
+            <form action="{{ route('financiera.store',$id) }}" method="post">
+                @csrf
                     <h2 class="text-center h1_cus">6. INFORMACIÓN GENERAL FINANCIERA </h2>
                     <div class="row">
                         <div class="col-md-6">
                             <!-- Primera sección -->
                             <div class="form-group">
-                                <label class="label-cus" for="tipoVinculacion">Capital social pagado</label>
-                                <input type="text" class="form-control" id="tipoVinculacion" name="tipoVinculacion" >
+                                <label class="label-cus" for="Capital">Capital social pagado</label>
+                                <input type="text" class="form-control" id="Capital" name="Capital" >
+                                @if ($errors->has('Capital'))
+                                    <p class="text-danger">{{ $errors->first('Capital') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="tipoPersona">Total activos</label>
-                                <input type="text" class="form-control" id="tipoPersona" name="tipoPersona" >
+                                <label class="label-cus" for="Activos">Total activos</label>
+                                <input type="text" class="form-control" id="Activos" name="Activos" >
+                                @if ($errors->has('Activos'))
+                                    <p class="text-danger">{{ $errors->first('Activos') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="tipoPersona">Egresos mensuales</label>
-                                <input type="text" class="form-control" id="tipoPersona" name="tipoPersona" >
+                                <label class="label-cus" for="EgresosMensuales">Egresos mensuales</label>
+                                <input type="text" class="form-control" id="EgresosMensuales" name="EgresosMensuales" >
+                                @if ($errors->has('EgresosMensuales'))
+                                    <p class="text-danger">{{ $errors->first('EgresosMensuales') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="tipoPersona">Ingresos no operacionales</label>
-                                <input type="text" class="form-control" id="tipoPersona" name="tipoPersona" >
+                                <label class="label-cus" for="IngresosNoOperacionales">Ingresos no operacionales</label>
+                                <input type="text" class="form-control" id="IngresosNoOperacionales" name="IngresosNoOperacionales" >
+                                @if ($errors->has('IngresosNoOperacionales'))
+                                    <p class="text-danger">{{ $errors->first('IngresosNoOperacionales') }}</p>
+                                @endif
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <!-- Segunda sección -->
                             <div class="form-group">
-                                <label class="label-cus" for="origenEmpresa">Total pasivos</label>
-                                <input type="text" class="form-control" id="origenEmpresa" name="origenEmpresa" >
+                                <label class="label-cus" for="Pasivos">Total pasivos</label>
+                                <input type="text" class="form-control" id="Pasivos" name="Pasivos" >
+                                @if ($errors->has('Pasivos'))
+                                    <p class="text-danger">{{ $errors->first('Pasivos') }}</p>
+                                @endif
                             </div>
 
                             <div class="form-group">
-                                <label class="label-cus" for="origenEmpresa">Ingresos mensuales</label>
-                                <input type="text" class="form-control" id="origenEmpresa" name="origenEmpresa" >
+                                <label class="label-cus" for="IngresosMensuales">Ingresos mensuales</label>
+                                <input type="text" class="form-control" id="IngresosMensuales" name="IngresosMensuales" >
+                                @if ($errors->has('IngresosMensuales'))
+                                    <p class="text-danger">{{ $errors->first('IngresosMensuales') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="origenEmpresa">Concepto ingresos no operacionales</label>
-                                <input type="text" class="form-control" id="origenEmpresa" name="origenEmpresa" >
+                                <label class="label-cus" for="ConceptoIngresosNoOperacionales">Concepto ingresos no operacionales</label>
+                                <input type="text" class="form-control" id="ConceptoIngresosNoOperacionales" name="ConceptoIngresosNoOperacionales" >
+                                @if ($errors->has('ConceptoIngresosNoOperacionales'))
+                                    <p class="text-danger">{{ $errors->first('ConceptoIngresosNoOperacionales') }}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -103,88 +125,59 @@
                     <div class="row">
                         <div class="col-md-6">
                         <div class="form-group">
-                        <label class="label-cus" for="EE.UU">Realiza Operaciones en Moneda Extranjera </label>
-                        <select class="form-control" id="tipoIdentificacion" name="tipoIdentificacion">
+                        <label class="label-cus" for="MonedaExt">Realiza Operaciones en Moneda Extranjera </label>
+                        <select class="form-control" id="MonedaExt" name="MonedaExt">
                             <option value="c.c">Seleccione una opcion</option>
-                            <option value="c.c">Si</option>
-                            <option value="c.e">No</option>
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
                         </select>
+                                @if ($errors->has('ConceptoIngresosNoOperacionales'))
+                                    <p class="text-danger">{{ $errors->first('ConceptoIngresosNoOperacionales') }}</p>
+                                @endif
                         </div>
                             <div class="form-group">
-                                <label class="label-cus" for="numeroIdentificacion">En caso de responder otras cuáles:</label>
-                                <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" >
+                                <label class="label-cus" for="Cuales1">En caso de responder otras cuáles:</label>
+                                <input type="text" class="form-control" id="Cuales1" name="Cuales1" >
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="correoElectronico">Cuáles</label>
-                                <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" >
+                                <label class="label-cus" for="Cuales2">Cuáles</label>
+                                <input type="text" class="form-control" id="Cuales2" name="Cuales2" >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                            <label class="label-cus" for="EE.UU">Tipo de operaciones </label>
-                            <select class="form-control" id="tipoIdentificacion" name="tipoIdentificacion">
+                            <label class="label-cus" for="TOperaciones">Tipo de operaciones </label>
+                            <select class="form-control" id="TOperaciones" name="TOperaciones">
                                 <option value="c.c">Seleccione una opcion</option>
-                                <option value="c.c">Importaciones</option>
-                                <option value="c.e">Exportaciones</option>
-                                <option value="c.e">Prestamos</option>
-                                <option value="c.e">Inversiones</option>
-                                <option value="c.e">Giros/remesas</option>
-                                <option value="c.e">Pago servicios</option>
-                                <option value="c.e">Otras</option>
+                                <option value="Importaciones">Importaciones</option>
+                                <option value="Exportaciones">Exportaciones</option>
+                                <option value="Prestamos">Prestamos</option>
+                                <option value="Inversiones">Inversiones</option>
+                                <option value="Giros/remesas">Giros/remesas</option>
+                                <option value="Pago servicios">Pago servicios</option>
+                                <option value="Otras">Otras</option>
                             </select>
+                                @if ($errors->has('TOperaciones'))
+                                    <p class="text-danger">{{ $errors->first('TOperaciones') }}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label class="label-cus" for="EE.UU">Posee productos financieros en moneda extranjera  </label>
-                                <select class="form-control" id="tipoIdentificacion" name="tipoIdentificacion">
-                                    <option value="c.c">Seleccione una opcion</option>
-                                    <option value="c.c">Si</option>
-                                    <option value="c.e">No</option>
+                                <label class="label-cus" for="ProductosME">Posee productos financieros en moneda extranjera  </label>
+                                <select class="form-control" id="ProductosME" name="ProductosME">
+                                    <option value="">Seleccione una opcion</option>
+                                    <option value="1">Si</option>
+                                    <option value="0">No</option>
                                 </select>
+                                @if ($errors->has('ProductosME'))
+                                    <p class="text-danger">{{ $errors->first('ProductosME') }}</p>
+                                @endif
                             </div>
-                            <div class="form-group">
-                                <label class="label-cus" for="paginaWeb">Página web</label>
-                                <input type="url" class="form-control" id="paginaWeb" name="paginaWeb" >
-                            </div>
                         </div>
-                    </div>
-                    <hr class="underline under_s">
-
-                    <h2 class="text-center h1_cus mt-4 mb-4">7. DATOS DE CONTACTOS </h2>
-                    <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label class="label-cus" for="nombreRepresentante">Correo recepción facturación</label>
-                        <input type="text" class="form-control" id="nombreRepresentante" name="nombreRepresentante" >
-                        </div>
-                        <div class="form-group">
-                        <label class="label-cus" for="tipoIdRepresentante">Nombre contacto principal</label>
-                        <input type="text" class="form-control" id="tipoIdRepresentante" name="tipoIdRepresentante" >
-                        </div>
-                        <div class="form-group">
-                        <label class="label-cus" for="tipoIdRepresentante">Teléfono</label>
-                        <input type="text" class="form-control" id="tipoIdRepresentante" name="tipoIdRepresentante" >
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label class="label-cus" for="nacionalidadRepresentante">Cargo</label>
-                        <input type="text" class="form-control" id="nacionalidadRepresentante" name="nacionalidadRepresentante" >
-                        </div>
-                        <div class="form-group">
-                        <label class="label-cus" for="nacionalidadRepresentante">Correo electrónico</label>
-                        <input type="text" class="form-control" id="nacionalidadRepresentante" name="nacionalidadRepresentante" >
-                        </div>
-
-                        <div class="form-group">
-                        <label class="label-cus" for="nacionalidadRepresentante">Fecha de cierre (opcional)</label>
-                        <input type="date" class="form-control" id="nacionalidadRepresentante" name="nacionalidadRepresentante" >
-                        </div>
-                    </div>
                     </div>
 
                     <div class="text-center mt-4">
-                    <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/fondos">Guardar y Continuar
-                    </a></div> 
+                    <button class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/entidadesf">Guardar y Continuar
+                    </button></div> 
                 </form>
             </div>
         </div>

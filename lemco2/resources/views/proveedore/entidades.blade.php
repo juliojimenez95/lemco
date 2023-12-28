@@ -6,6 +6,8 @@
     <title>Registro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/anexos.css') }}">
+
 
     <style>
         body {
@@ -55,80 +57,90 @@
         
         <div class="card col-sm-12">
             <div class="card-body">
-                <form>
-                    <h2 class="text-center h1_cus">7. REGISTRO DE ENTIDADES FINANCIERAS</h2>
+            <form action="{{ route('entidades.store',$id) }}" method="post">
+                @csrf
+                    <h2 class="text-center h1_cus">7. REGISTRO DE ENTIDADES FINANCIERAS*</h2>
+                    <div class="col-sm-12 text-center">
+                    <p class="p_cus">Autorizo a Grupo Lemco a realizar los pagos en la siguiente cuenta: Adjunte Certificado en anexos.</div>
                     <div class="row">
                     <div class="col-md-6">
                  <div class="form-group">
-                <label for="flazonSocial" class="label-cus">Entidad*</label>
-                <input type="text" class="form-control" id="RazonSocial" name="RazonSocial" >
+                <label for="Entidad" class="label-cus">Entidad*</label>
+                <input type="text" class="form-control" id="Entidad" name="Entidad" >
+                @if ($errors->has('Entidad'))
+                    <p class="text-danger">{{ $errors->first('Entidad') }}</p>
+                @endif
               </div>
               <div class="form-group">
-                <label for="nacionalidad" class="label-cus">Ciudad*</label>
-                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" >
+                <label for="Ciudad" class="label-cus">Ciudad*</label>
+                <input type="text" class="form-control" id="Ciudad" name="Ciudad" >
+                @if ($errors->has('Ciudad'))
+                    <p class="text-danger">{{ $errors->first('Ciudad') }}</p>
+                @endif
               </div>
 
               <div class="form-group">
-                <label for="numero" class="label-cus">Número de la cuenta *</label>
-                <input type="text" class="form-control" id="numero" name="numero" >
+                <label for="Cuenta" class="label-cus">Número de la cuenta *</label>
+                <input type="text" class="form-control" id="Cuenta" name="Cuenta" >
+                @if ($errors->has('Cuenta'))
+                    <p class="text-danger">{{ $errors->first('Cuenta') }}</p>
+                @endif
               </div>
+
+              <div class="div_inside form-group">
+              <p class="div_p">Subir documento anexo<span>*</span></p>
+                <div class="div_img" >
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img2"  class="img-fluid" onclick="document.getElementById('Certificado').click()">
+                            <input type="file" id="Certificado" name="Certificado" style="display:none;" onchange="validateFile1()">
+                </div>
+                @if ($errors->has('Pais'))
+                    <p class="text-danger">{{ $errors->first('Pais') }}</p>
+                @endif
+             </div>
               
             </div>
             <div class="col-md-6">
               
             <div class="form-group">
-                <label for="participacion" class="label-cus">Pais*</label>
-                <input type="text" class="form-control" id="participacion" name="participacion" >
+                <label for="Pais" class="label-cus">Pais*</label>
+                <input type="text" class="form-control" id="Pais" name="Pais" >
+                @if ($errors->has('Pais'))
+                    <p class="text-danger">{{ $errors->first('Pais') }}</p>
+                @endif
             </div>
             
             <div class="form-group">
-                <label for="participacion" class="label-cus">Tipo de producto (corriente / ahorros) *</label>
-                <input type="text" class="form-control" id="participacion" name="participacion" >
+                <label for="Tproducto" class="label-cus">Tipo de producto (corriente / ahorros) *</label>
+                <input type="text" class="form-control" id="Tproducto" name="Tproducto" >
+                @if ($errors->has('Tproducto'))
+                    <p class="text-danger">{{ $errors->first('Tproducto') }}</p>
+                @endif
             </div>
 
-              <div class="row justify-content-center " style="margin-top: 47px;">
+            <div class="form-group">
+                <label for="Correo" class="label-cus">Correo Electrónico (a dónde se envian los soportes de pago):opcional</label>
+                <input type="text" class="form-control" id="Correo" name="Correo" >
+                @if ($errors->has('TEmpresa'))
+                    <p class="text-danger">{{ $errors->first('TEmpresa') }}</p>
+                @endif
+            </div>
+
+              
+            </div>
+              
+              
+            </div>
+            <div class="row justify-content-center " style="margin-top: 47px;">
                 <div class="col-md-6 text-center">
-                <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/proveedore/clientes">Agregar
-                    </a>
+                <button class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/proveedore/clientes">Agregar
+                    </button>
                 </div>
-            </div>
-              
-              
-            </div>
           </div>
 
 
           
                 </form>
 
-                <div class="row">
-                <div class="col-sm-12">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Entidad</th>
-                                <th>Pais</th>
-                                <th>Ciudad</th>
-                                <th>Tipo de producto</th>
-                                <th>Número de la cuenta</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                
-                            </tr>
-                            <!-- Agrega más filas según sea necesario -->
-                        </tbody>
-                    </table>
-                </div>
-                <center>
-                <div class="col-md-12 d-flex ">
-                <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/declaracion">Continuar
-                    </a>
-                </div>
-            </div>
-            </center>
-    </div>
 
             </div>
         </div>

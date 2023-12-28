@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Lemco</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/anexos.css') }}">
+
     
     <style>
         body {
@@ -41,36 +43,37 @@
     <div class="container">
             <div>
                 <a class="btn btn-success btn_cb_c" href="#"
+
                                 style="margin-top: 25px;">
                                 <i class="fa-solid fa-arrow-left"></i>
                                 {{ __('Regresar') }}
                                 </a>
             </div>
-        
-        <div class="text-center">
-    
+    <div class="text-center">
+            
             <img src="https://formacion.lemco.co/pluginfile.php/1/theme_edly/main_logo/1694462261/logo%20lemco.png"   class=" my-4 img-fluid">
-
+            
 
         </div>
         
         <div class="card col-sm-12">
             <div class="card-body">
                 <form>
-                    <h1 class=" text-center h1_cus">4. COMPOSICIÓN ACCIONARIA*</h1>
+                <h1 class=" text-center h1_cus">4. COMPOSICIÓN ACCIONARIA*</h1>
                     <div class="col-sm-12">
                     <p class="p_cus">Relacionar los accionistas o asociados que tengan una participación igual o superior al 5% en el capital social o aporte de la empresa hasta llegar al Beneficiario Final. 
                     En caso que tenga más de cinco (5) persona (natural y/o jurídica), adjuntar como documento anexo el certificado de composición firmado por Revisor Fiscal, Contador y/o Representante Legal (el que aplique).</p>
                     </div>
+
                     <h2 class="text-center h1_cus">Registro Accionistas</h2>
                     <div class="row">
                     <div class="col-md-6">
                  <div class="form-group">
-                <label for="flazonSocial" class="label-cus">Razón Social o nombre completo:</label>
+                <label for="flazonSocial" class="label-cus">Razón Social o nombre completo*</label>
                 <input type="text" class="form-control" id="RazonSocial" name="RazonSocial" placeholder="Ingrese su Razón Social o nombre completo">
               </div>
               <div class="form-group">
-                <label for="tipoIdentificacion" class="label-cus">Tipo de identificación:</label>
+                <label for="tipoIdentificacion" class="label-cus">Tipo de identificación*</label>
                 <select class="form-control" id="tipoIdentificacion" name="tipoIdentificacion">
                     <option value="c.c">C.C. (Cédula de Ciudadanía)</option>
                     <option value="c.e">C.E. (Cédula de Extranjería)</option>
@@ -78,7 +81,7 @@
                 </select>
             </div>
               <div class="form-group">
-                <label for="nacionalidad" class="label-cus">Nacionalidad:</label>
+                <label for="nacionalidad" class="label-cus">Nacionalidad*</label>
                 <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" placeholder="Ingrese su nacionalidad">
               </div>
               
@@ -86,32 +89,39 @@
             <div class="col-md-6">
               
             <div class="form-group">
-                <label for="participacion" class="label-cus">Participación:</label>
+                <label for="participacion" class="label-cus">Participación*</label>
                 <input type="text" class="form-control" id="participacion" name="participacion" placeholder="Ingrese su participación">
             </div>
               <div class="form-group">
-                <label for="numero" class="label-cus">Número:</label>
+                <label for="numero" class="label-cus">Número*</label>
                 <input type="text" class="form-control" id="numero" name="numero" placeholder="Ingrese su número">
               </div>
+              <div class="div_inside form-group">
+              <p class="div_p">Subir documento anexo<span>*</span></p>
+                <div class="div_img" >
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img2"  class="img-fluid" onclick="document.getElementById('Rut').click()">
+                            <input type="file" id="Rut" name="Rut" style="display:none;" onchange="validateFile1()">
+                </div>
+             </div>
 
-              <div class="row justify-content-center " style="margin-top: 47px;">
+              
+            </div>
+            
+              
+            </div>
+            <div class="row justify-content-center " style="margin-bottom: 47px;">
                 <div class="col-md-6 text-center">
                 <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/proveedore/declaracion">Agregar
                     </a>
                 </div>
-            </div>
-              
-              
-            </div>
           </div>
 
 
           
                 </form>
                 <hr class="underline under_s">
-
                 <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                     <table class="table">
                         <thead>
                             <tr>
@@ -131,13 +141,14 @@
                     </table>
                 </div>
                 <center>
-                <div class="col-md-12 d-flex ">
-                <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/declaracion">Continuar
+                <div class="col-md-12 ">
+                <a class="text-center btn" style="background-color: #193b64; color: #93c353;" href="/proveedore/declaracion">Continuar
                     </a>
                 </div>
             </div>
             </center>
-    </div>
+            </div>
+
 
             </div>
         </div>

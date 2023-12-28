@@ -55,36 +55,48 @@
         
         <div class="card col-sm-12">
             <div class="card-body">
-                <form>
+            <form action="{{ route('firma.store',$id) }}" method="post">
+                @csrf
                     <h2 class="text-center h1_cus">12. FIRMA DEL REPRESENTANTE LEGAL Ó PERSONA NATURAL</h2>
                     <div class="row">
                     <div class="col-md-6">
                  <div class="form-group">
-                <label for="flazonSocial" class="label-cus">Nombre completo:</label>
-                <input type="text" class="form-control" id="RazonSocial" name="RazonSocial" placeholder="Ingrese su Razón Social o nombre completo">
+                <label for="Nombre" class="label-cus">Nombre completo*</label>
+                <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre completo">
+                @if ($errors->has('Nombre'))
+                    <p class="text-danger">{{ $errors->first('Nombre') }}</p>
+                @endif
               </div>
               
               <div class="form-group">
-                <label for="nacionalidad" class="label-cus">No. de identificación:</label>
-                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" placeholder="Ingrese su nacionalidad">
+                <label for="Identificacion" class="label-cus">No. de identificación*</label>
+                <input type="text" class="form-control" id="Identificacion" name="Identificacion" placeholder="Ingrese su nacionalidad">
+                @if ($errors->has('Identificacion'))
+                    <p class="text-danger">{{ $errors->first('Identificacion') }}</p>
+                @endif
               </div>
               
             </div>
             <div class="col-md-6">
               
             <div class="form-group">
-                <label for="tipoIdentificacion" class="label-cus">Tipo de identificación:</label>
-                <select class="form-control" id="tipoIdentificacion" name="tipoIdentificacion">
+                <label for="Tidentificacion" class="label-cus">Tipo de identificación*</label>
+                <select class="form-control" id="Tidentificacion" name="Tidentificacion">
                     <option value="c.c">C.C. (Cédula de Ciudadanía)</option>
                     <option value="c.e">C.E. (Cédula de Extranjería)</option>
                     <option value="p.p">P.P. (Pasaporte)</option>
                 </select>
+                @if ($errors->has('Tidentificacion'))
+                    <p class="text-danger">{{ $errors->first('Tidentificacion') }}</p>
+                @endif
             </div>
               <div class="form-group">
                 <canvas id="firma" width="200" height="50"></canvas>
                 <hr class=" under_s">
-                <label for="tipoIdentificacion" class="label-cus">Firma</label>
-
+                <label for="Firma" class="label-cus">Firma*</label>
+                @if ($errors->has('Firma'))
+                    <p class="text-danger">{{ $errors->first('Firma') }}</p>
+                @endif
               </div>
 
             </div>
@@ -99,8 +111,8 @@
 
             <div class="row justify-content-center " style="margin-bottom: 40px;">
             <div class="col-md-6 text-center">
-            <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/anexo">Guardar y Continuar
-                </a>
+            <button class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/anexo">Guardar y Continuar
+                </button>
             </div>
             </center>
                 </form>

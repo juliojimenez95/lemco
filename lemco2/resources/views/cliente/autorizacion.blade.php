@@ -56,7 +56,8 @@
         
         <div class="card col-sm-12">
             <div class="card-body">
-                <form>
+            <form action="{{ route('autorizacion.store',$id) }}" method="post">
+                @csrf
                     <h2 class="text-center h1_cus">9. AUTORIZACIÓN DE TRATAMIENTO DE DATOS PERSONALES </h2> <br>
                     <p class="p_cus">De acuerdo a la Ley Estatutaria 1581 de 2012 reglamentada por el Decreto No.1377 de 2013 y obrando a nombre propio y como Representante Legal de la razón social que represento autorizo de manera previa, informada, voluntaria y expresa a Lemco S.A.S., Challenger S.A.S, Operadora Habitel S.A.S, Habitel S.A.S, Fundación Challenger, Sky Forwarder S.A.S, Sky Industrial S.A.S, Sky Logística Integral S.A.S y Sky Electronics Zona Franca S.A.S para la recolección, tratamiento, almacenamiento, conservación, uso, circulación, supresión, transmisión y transferencia de datos personales suministrados en el presente formulario así como los recolectados de manera biométrica, por medios electrónicos o cualquier otro medio, cuyas finalidades, derechos de los titulares y  procedimiento para  presentación de reclamos pueden ser consultadas en la Política de Tratamiento de Datos Personales que se encuentra publicada en la páginas www.lemco.co.</p>
                     <div class="row">
@@ -65,15 +66,18 @@
               
                              <center>
                             <strong class="text-primary justify-content-center">
-                            <label class="op_cus">AUTORIZO <input type="radio" name="grupo5" value="1"></label>
-                            <label class="op_cus">NO AUTORIZO <input type="radio" name="grupo5" value="0"></label>
+                            <label class="op_cus">AUTORIZO <input type="radio" name="Respuesta" value="1"></label>
+                            <label class="op_cus">NO AUTORIZO <input type="radio" name="Respuesta" value="0"></label>
                             </strong>
+                            @if ($errors->has('Respuesta'))
+                                <p class="text-danger">{{ $errors->first('Respuesta') }}</p>
+                            @endif
                             </center>
 
               <div class="row justify-content-center " style="margin-top: 47px;">
                 <div class="col-md-6 text-center">
-                <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/reporter">Guardar y Continuar
-                    </a>
+                <button class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/reporter">Guardar y Continuar
+                    </button>
                 </div>
             </div>
               

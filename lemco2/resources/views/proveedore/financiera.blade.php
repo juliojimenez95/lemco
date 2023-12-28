@@ -53,7 +53,7 @@
         <div class="card col-sm-12">
             <div class="card-body">
                 <form>
-                    <h2 class="text-center h1_cus">6. INFORMACIÓN GENERAL FINANCIERA </h2>
+                    <h2 class="text-center h1_cus">6. INFORMACIÓN GENERAL FINANCIERA*</h2>
                     <div class="row">
                         <div class="col-md-6">
                             <!-- Primera sección -->
@@ -141,16 +141,12 @@
                                     <option value="c.e">No</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label class="label-cus" for="paginaWeb">Página web</label>
-                                <input type="url" class="form-control" id="paginaWeb" name="paginaWeb" >
-                            </div>
                         </div>
                     </div>
                 
 
                     <div class="text-center mt-4">
-                    <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/proveedore/entidades">Guardar y Continuar
+                    <a class="text-center btn" style="background-color: #193b64; color: #93c353;"  href="/proveedore/entidadesf">Guardar y Continuar
                     </a></div> 
                 </form>
             </div>
